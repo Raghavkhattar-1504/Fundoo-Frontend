@@ -1,0 +1,34 @@
+.notes-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 50px;
+    padding-bottom: 50px;
+}
+
+.notes-main-container{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2px;
+}
+
+.notes-addnote-component{
+    width: 100%;
+    margin-bottom: 0;
+}
+
+
+@media (max-width: 768px) {
+    .notes-container{
+        width: 100%;
+    }
+}
+
+@media (max-width: 425px) {
+    .notes-container{
+        width: 100%;
+    }
+}
