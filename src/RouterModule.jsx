@@ -8,6 +8,8 @@ import NotesContainer from "./components/NotesContainer/NotesContainer";
 import TrashContainer from "./components/TrashContainer/TrashContainer";
 import NoteCard from "./components/NoteCard/NoteCard";
 import SearchProvider from "./context/SearchContext";
+import ReminderContainer from "./components/ReminderContainer/ReminderContainer";
+import LabelContainer from "./components/LabelContainer/LabelContainer";
 
 const RouterModule = () => {
 
@@ -43,6 +45,14 @@ const RouterModule = () => {
                 {
                     path: "trash",
                     element: <TrashContainer />
+                },
+                {
+                    path: "reminder",
+                    element: <ReminderContainer />
+                },
+                {
+                    path: "editlabel",
+                    element: <LabelContainer />
                 }
             ]
         },

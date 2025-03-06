@@ -57,7 +57,6 @@
     margin-bottom: 2px;
 }
 
-/* Search Bar */
 .dashboard-header-middle-container {
     width: 70%;
     max-width: 50%;
@@ -87,7 +86,6 @@
     margin-right: 5px;
 }
 
-/* Right Section (Icons + Account Menu) */
 .dashboard-header-right-container {
     display: flex;
     align-items: center;
@@ -115,7 +113,6 @@
     gap: 35px;
 }
 
-/* Icons */
 .icons {
     cursor: pointer;
     color: #5F6368;
@@ -133,32 +130,45 @@
     color: #5F6368;
 }
 
-.grid-icon{
+.grid-icon {
     margin-top: 5px;
 }
 
-/* Responsive Design */
+@media (max-width: 1024px) {
+    .header-left {
+        max-width: 30%;
+    }
+
+    .header-right {
+        width: 70%;
+        gap: 3%;
+    }
+
+    .dashboard-header-middle-container {
+        width: 60%;
+    }
+
+    .dashboard-header-right-container {
+        width: 250px;
+    }
+}
+
 @media (max-width: 768px) {
     .header-left {
         max-width: 30%;
-        border: 1px soild yellow;
     }
 
-    /* Hide unnecessary elements */
     .header-left-container-menu,
     .header-right-container-icons,
-    .grid-icon,
-    .row-icon {
-        display: none !important;
+    .grid-icon {
+        display: none;
     }
 
     .header-right {
         justify-content: flex-end;
-        border: 1px soild red;
     }
 
     .dashboard-header-middle-container {
-        border: 1px soild red;
         width: auto;
         max-width: fit-content;
         background-color: transparent;
@@ -177,7 +187,6 @@
     }
 
     .dashboard-header-right-container {
-        // border: 1px solid green;
         display: flex;
         align-items: center;
         justify-content: flex-end;
@@ -187,10 +196,6 @@
         margin-right: 15px;
     }
 
-    .header-middle-search-input{
-        border: 1px solid pink;
-    }
-
     .header-right-container-account {
         display: flex;
         justify-content: flex-end;
@@ -198,12 +203,42 @@
     }
 }
 
-@media (max-width: 520px) {
+@media (max-width: 480px) {
+    .dashboard-header {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px 0;
+    }
+
     .header-left {
-        width: 150px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .header-left-container-logo img {
+        height: 40px;
+        width: 35px;
+    }
+
+    .dashboard-header-middle-container {
+        display: none;
     }
 
     .header-right {
+        width: 100%;
         justify-content: center;
+        gap: 10px;
+    }
+
+    .dashboard-header-right-container {
+        width: auto;
+        justify-content: center;
+        gap: 10px;
+        margin-right: 0;
+    }
+
+    .header-right-container-account {
+        gap: 8px;
     }
 }

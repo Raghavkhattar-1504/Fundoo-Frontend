@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { getNotesApiCall } from '../../utils/api';
 import NoteCard from '../NoteCard/NoteCard';
 import './ArchiveContainer.scss';
-import { useNavigate } from 'react-router-dom';
 
 const ArchiveContainer = () => {
   const [notes, setNotes] = useState([]);

@@ -4,7 +4,6 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import './LongMenu.scss';
-import NoteCard from './NoteCard';
 
 export default function LongMenu({ handleIconClick }) {
   const [anchorEl, setAnchorEl] = React.useState(null);

@@ -1,5 +1,5 @@
 import './DashboardContainer.scss';
-import { Lightbulb, FolderDown, Trash2 } from "lucide-react";
+import { Lightbulb, FolderDown, Trash2 , Bell, Pencil} from "lucide-react";
 import './Sidebar.scss';
 import { NavLink, useLocation } from 'react-router-dom';
 
@@ -18,7 +18,20 @@ const sidebarItemsList = [
         name: "Trash", 
         icon: Trash2,
         path: '/dashboard/trash'
+    },
+    {
+        name: "Reminder", 
+        icon: Bell,
+        path: '/dashboard/reminder',
+        
+    },
+    {
+        name: "Edit Labels", 
+        icon: Pencil,
+        path: '/dashboard/editlabel',
+        
     }
+
 ];
 
 const Sidebar = ({isCollapsed}) => {

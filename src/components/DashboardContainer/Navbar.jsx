@@ -98,7 +98,12 @@ function Navbar({ toggleSidebar, allNotes }) {
             setNavTitle('Archive');
         } else if (path === 'trash') {
             setNavTitle('Trash');
+        } else if(path === 'reminder') {
+            setNavTitle('Reminder');
+        } else if(path === 'editlabel'){
+            setNavTitle('Labels');
         }
+
     }, [path]);
 
     // Filter function to update search results

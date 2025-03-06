@@ -1,0 +1,49 @@
+.label-centre {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15%;
+}
+
+.label-icon {
+    height: 5rem;
+    width: 5rem;
+    opacity: 0.3;
+}
+
+.label-text {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: xx-large;
+    opacity: 0.5;
+}
+
+@media (max-width: 768px) {
+    .label-centre {
+        margin-top: 10%;
+    }
+
+    .label-icon {
+        height: 4rem;
+        width: 4rem;
+    }
+
+    .label-text {
+        font-size: x-large;
+    }
+}
+
+@media (max-width: 480px) {
+    .label-centre {
+        margin-top: 5%;
+    }
+
+    .label-icon {
+        height: 3rem;
+        width: 3rem;
+    }
+
+    .label-text {
+        font-size: large;
+    }
+}

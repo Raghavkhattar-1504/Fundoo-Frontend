@@ -9,11 +9,11 @@ const DashboardContainer = () => {
     const [allNotes, setAllNotes] = useState([]);
 
     useEffect(() => {
-        console.log("Sidebar collapsed state changed: ", isCollapsed);
+        // console.log("Sidebar collapsed state changed: ", isCollapsed);
     }, [isCollapsed]);
 
     const toggleSidebar = () => {
-        console.log("Is Collapsed Before: ", isCollapsed);
+        // console.log("Is Collapsed Before: ", isCollapsed);
         setIsCollapsed(prev => !prev);
     };
 

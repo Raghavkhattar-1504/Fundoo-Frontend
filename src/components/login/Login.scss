@@ -1,4 +1,3 @@
-/* Main container */
 .login-body-container {
     height: 100vh;
     width: 100vw;
@@ -8,7 +7,6 @@
     padding: 1rem;
 }
 
-/* Login content box */
 .content-box {
     width: 27%;
     border: 1px solid black;
@@ -21,27 +19,25 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Responsive adjustments */
-@media (max-width: 1024px) { /* Tablets */
+@media (max-width: 1024px) {
     .content-box {
         width: 50%;
     }
 }
 
-@media (max-width: 768px) { /* Large smartphones & small tablets */
+@media (max-width: 768px) {
     .content-box {
         width: 70%;
     }
 }
 
-@media (max-width: 480px) { /* Small smartphones */
+@media (max-width: 480px) {
     .content-box {
         width: 90%;
         padding: 1rem;
     }
 }
 
-/* Login box */
 .login-box {
     display: flex;
     flex-direction: column;
@@ -49,14 +45,12 @@
     width: 100%;
 }
 
-/* Header section */
 .login-header {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-/* Login details section */
 .login-details {
     display: flex;
     flex-direction: column;
@@ -64,7 +58,6 @@
     gap: 15px;
 }
 
-/* Fundoo text (brand name) */
 .fundoo-text {
     font-size: 1.5rem;
     color: orange;
@@ -73,14 +66,12 @@
     padding: 0.5rem;
 }
 
-/* Sign-in text */
 .signin-text {
     font-size: 1.5rem;
     font-weight: 500;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Use account text */
 .useaccount-text {
     font-size: 1.2rem;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -88,7 +79,6 @@
     font-weight: 400;
 }
 
-/* Responsive font adjustments */
 @media (max-width: 768px) {
     .fundoo-text {
         font-size: 1.3rem;
@@ -117,7 +107,6 @@
     }
 }
 
-/* Input fields */
 .outlined-basic {
     width: 100%;
     margin-top: 1rem;
@@ -126,7 +115,6 @@
     border-radius: 5px;
 }
 
-/* Forgot password */
 .forgot-password-text {
     margin-top: -10px;
     color: blue;
@@ -141,14 +129,12 @@
     text-decoration: underline;
 }
 
-/* Responsive adjustments for forgot password */
 @media (max-width: 480px) {
     .forgot-password-text {
         font-size: 0.9rem;
     }
 }
 
-/* Login footer */
 .login-footer {
     width: 100%;
     display: flex;
@@ -156,7 +142,6 @@
     padding: 1rem;
 }
 
-/* Create account text */
 .create-account-text {
     color: blue;
     font-size: 1rem;
@@ -170,14 +155,12 @@
     text-decoration: underline;
 }
 
-/* Responsive adjustments for create account text */
 @media (max-width: 480px) {
     .create-account-text {
         font-size: 0.9rem;
     }
 }
 
-/* Button styles */
 .login-button {
     width: 100%;
     padding: 0.8rem;
@@ -195,7 +178,6 @@
     background-color: darkorange;
 }
 
-/* Responsive button adjustments */
 @media (max-width: 480px) {
     .login-button {
         font-size: 0.9rem;

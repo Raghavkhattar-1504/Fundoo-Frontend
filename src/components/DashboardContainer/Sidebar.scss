@@ -4,11 +4,11 @@
     margin-top: 15px;
     transition: width 0.3s ease-in-out;
     margin-right: 10px;
+}
 
-    a {
-        text-decoration: none;
-        color: #5F6368;
-    }
+.dashboard-sidebar a {
+    text-decoration: none;
+    color: #5F6368;
 }
 
 .sidebar-column {
@@ -19,8 +19,12 @@
     display: flex;
     align-items: center;
     padding-left: 10px;
-    gap: 10%;
+    gap: 12%;
     transition: all 0.3s ease-in-out;
+}
+
+.sidebar-column:hover {
+    background-color: #E8EAED;
 }
 
 .sidebar-text {
@@ -39,37 +43,56 @@
     background-color: #FEEFC3;
 }
 
+.archive {
+    background-color: #E3F2FD;
+}
+
+.trash {
+    background-color: #FFCDD2;
+}
+
+.reminder {
+    background-color: white;
+}
+
+.edit-labels {
+    background-color: white;
+}
+
 .dashboard-sidebar.collapsed {
     width: 55px;
     transition: width 0.3s ease-in-out;
+}
 
-    .sidebar-column {
-        justify-content: center;
-        margin: 0 10px;
-        padding-left: 0;
-        gap: 0;
-        border-radius: 50%;
-    }
+.dashboard-sidebar.collapsed .sidebar-column {
+    justify-content: center;
+    margin: 0 10px;
+    padding-left: 0;
+    gap: 0;
+    border-radius: 50%;
+}
 
-    .sidebar-text {
-        display: none;
-    }
+.dashboard-sidebar.collapsed .sidebar-text {
+    display: none;
+}
 
-    .sidebar-icon {
-        width: 25px;
-        height: 25px;
-    }
+.dashboard-sidebar.collapsed .sidebar-icon {
+    width: 25px;
+    height: 25px;
+}
 
-    .notes {
-        border-radius: 50%;
-        background-color: #FEEFC3;
-    }
+.dashboard-sidebar.collapsed .notes, 
+.dashboard-sidebar.collapsed .archive, 
+.dashboard-sidebar.collapsed .trash, 
+.dashboard-sidebar.collapsed .reminder, 
+.dashboard-sidebar.collapsed .edit-labels {
+    border-radius: 50%;
+    margin-bottom: 2px;
 }
 
 @media (max-width: 768px) {
     .dashboard-sidebar {
         width: 55px;
-        transition: width 0.3s ease-in-out;
     }
 
     .sidebar-column {
@@ -89,8 +112,44 @@
         height: 25px;
     }
 
-    .notes {
+    .notes, .archive, .trash, .reminder, .edit-labels {
         border-radius: 50%;
-        background-color: #FEEFC3;
+    }
+}
+
+@media (max-width: 480px) {
+    .dashboard-sidebar {
+        width: 100%;
+        height: auto;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        background-color: #fff;
+        box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.1);
+        padding: 8px 0;
+        z-index: 1000;
+    }
+
+    .sidebar-column {
+        width: auto;
+        height: auto;
+        border-radius: 50%;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .sidebar-text {
+        display: none;
+    }
+
+    .sidebar-icon {
+        width: 28px;
+        height: 28px;
     }
 }
