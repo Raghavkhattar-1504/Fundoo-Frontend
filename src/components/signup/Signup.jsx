@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import './signup.scss'
+import './Signup.scss'
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Googleone from '../../assets/googleone.png'
