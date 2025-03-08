@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Archive } from "lucide-react";
 import "./ReminderContainer.scss";
-import { getReminderNotes } from "../../utils/API";
+import { getReminderNotes } from "../../utils/api";
 import Masonry from "@mui/lab/Masonry";
 import NoteCard from "../NoteCard/NoteCard";
 
