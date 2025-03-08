@@ -4,12 +4,11 @@ import NoteCard from '../NoteCard/NoteCard';
 import './NotesContainer.scss';
 import AddNote from '../AddNote/AddNote';
 import { SearchContext } from "../../context/SearchContext";
+import Masonry from 'react-layout-masonry';
 
 const NotesContainer = () => {
     const [notes, setNotes] = useState([]);
-    const { searchTerm } = useContext(SearchContext)
-
-    // console.log("searchtem",searchTerm)
+    const { searchTerm } = useContext(SearchContext);
 
     useEffect(() => {
         getNotesApiCall()
@@ -25,41 +24,31 @@ const NotesContainer = () => {
             })
             .catch((error) => console.error("Error fetching notes:", error));
     }, []);
- 
-    const filteredNotes = useMemo(() => {
-        if (!searchTerm || !searchTerm.trim()) return notes
-        // console.log("notes",notes)
-        return notes.filter((note) => note.title.toLowerCase().includes(searchTerm) || note.description.toLowerCase().includes(searchTerm))
-    }, [searchTerm, notes])
 
+    const filteredNotes = useMemo(() => {
+        if (!searchTerm || !searchTerm.trim()) return notes;
+        return notes.filter((note) =>
+            note.title.toLowerCase().includes(searchTerm) || note.description.toLowerCase().includes(searchTerm)
+        );
+    }, [searchTerm, notes]);
 
     const updateNoteList = (response) => {
         const { action, data } = response;
-        // console.log("Data UpdateList: ", action);
-        // console.log("Data UpdateList: ", data);
         if (action === 'add') {
             setNotes([{ title: data.title, description: data.description, id: data.id }, ...notes]);
         } else if (action === 'archive' || action === 'trash') {
             setNotes(notes.filter((note) => note.id !== data.id));
         } else if (action === 'edit') {
             setNotes(notes.map((note) => (note.id === data.id ? data : note)));
-        }
-        else if (action === "reminder") {
+        } else if (action === "reminder") {
             setNotes(notes.map((note) =>
-                note.id === data.id ? {
-                    ...note, reminder: [data.reminder]
-                } : note)
-            )
-        }
-        else if (action === "removeReminder") {
-            // console.log("Note Details: ", data);
+                note.id === data.id ? { ...note, reminder: [data.reminder] } : note
+            ));
+        } else if (action === "removeReminder") {
             setNotes(notes.map((note) =>
-                note.id === data.noteDetails.id
-                    ? { ...note, reminder: [] } 
-                    : note
+                note.id === data.noteDetails.id ? { ...note, reminder: [] } : note
             ));
         }
-        
     };
 
     return (
@@ -68,15 +57,23 @@ const NotesContainer = () => {
                 <AddNote updateList={updateNoteList} />
             </div>
             <div className='notes-main-container'>
-                {filteredNotes.map((note, index) => (
-                    <NoteCard
-                        key={note.id || index}
-                        title={note.title}
-                        description={note.description}
-                        noteDetails={note}
-                        updateList={updateNoteList}
-                    />
-                ))}
+                <Masonry
+                    columns={{ 480: 1, 768: 2, 1024: 3, 1280: 4 }}
+                    gap={5}
+                    className="masonry-grid"
+                    columnClassName="masonry-column"
+                >
+                    {filteredNotes.map((note) => (
+                        <NoteCard
+                            key={note.id}
+                            title={note.title}
+                            description={note.description}
+                            noteDetails={note}
+                            updateList={updateNoteList}
+                        />
+                    ))}
+                </Masonry>
+
             </div>
         </div>
     );

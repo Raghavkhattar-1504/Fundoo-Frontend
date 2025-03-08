@@ -8,10 +8,12 @@ import Modal from '@mui/material/Modal';
 import AddNote from '../AddNote/AddNote';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
-let MAX_DESCRIPTION_LENGTH = 130;
+let MAX_DESCRIPTION_LENGTH = 250;
+let MAX_TITLE_LENGTH = 100;
 
 const NoteCard = ({ title, description = "", noteDetails, updateList }) => {
-    noteDetails.reminder? MAX_DESCRIPTION_LENGTH = 50 : MAX_DESCRIPTION_LENGTH = 130
+    // noteDetails.reminder ? MAX_DESCRIPTION_LENGTH = 50 : MAX_DESCRIPTION_LENGTH = 130
+
     const navigate = useNavigate();
     const { noteId } = useParams();
     const location = useLocation().pathname.split("/")[2];
@@ -27,9 +29,13 @@ const NoteCard = ({ title, description = "", noteDetails, updateList }) => {
     ];
 
     const isLongDescription = description.length > MAX_DESCRIPTION_LENGTH;
+    const isLongTitle = title.length > MAX_TITLE_LENGTH;
     const truncatedDescription = isLongDescription
         ? description.substring(0, MAX_DESCRIPTION_LENGTH) + "..."
         : description;
+    const truncatedTitle = isLongTitle
+        ? title.substring(0, MAX_TITLE_LENGTH) + "..."
+        : title;
 
     const handleIconClick = async (action, data = null) => {
         try {
@@ -49,9 +55,9 @@ const NoteCard = ({ title, description = "", noteDetails, updateList }) => {
                 let response = await reminderAPI({ "noteIdList": [`${noteDetails.id}`], reminder: data })
                 updateList({ action: "reminder", data: { ...noteDetails, reminder: data } })
             }
-            else if(action === 'removeReminder'){
-                let response = await removeReminderAPI({ "noteIdList": [`${noteDetails.id}`]})
-                updateList({ action: "removeReminder", data: {noteDetails}})
+            else if (action === 'removeReminder') {
+                let response = await removeReminderAPI({ "noteIdList": [`${noteDetails.id}`] })
+                updateList({ action: "removeReminder", data: { noteDetails } })
             }
         } catch (error) {
             console.error("Error performing action:", error);
@@ -99,7 +105,7 @@ const NoteCard = ({ title, description = "", noteDetails, updateList }) => {
                 setEditNote(true);
                 handleNavigate();
             }}>
-                <h3 className="card-title">{title}</h3>
+                <h3 className="card-title">{truncatedTitle}</h3>
                 <p className="card-desc">{truncatedDescription}</p>
             </div>
 
@@ -142,7 +148,7 @@ const NoteCard = ({ title, description = "", noteDetails, updateList }) => {
                     }}
                     onMouseOver={(e) => (e.target.style.color = "#d63031")}
                     onMouseOut={(e) => (e.target.style.color = "#555")}
-                    onClick={()=> handleIconClick('removeReminder')}
+                    onClick={() => handleIconClick('removeReminder')}
                 />
             </div>
 
@@ -156,7 +162,6 @@ const NoteCard = ({ title, description = "", noteDetails, updateList }) => {
                     </>
                 ) : (
                     <>
-                        {/* <BellPlus className="icons reminder-icon" onClick={()=> handleIconClick('reminder')} /> */}
                         <ReminderIcon handleIconClick={handleIconClick} noteDetails={noteDetails} />
                         <UserPlus className="icons" />
                         <Image className="icons" />
