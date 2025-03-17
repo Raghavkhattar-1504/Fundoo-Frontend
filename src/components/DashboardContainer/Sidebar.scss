@@ -4,6 +4,7 @@
     margin-top: 15px;
     transition: width 0.3s ease-in-out;
     margin-right: 10px;
+
 }
 
 .dashboard-sidebar a {
@@ -37,6 +38,13 @@
 .sidebar-icon {
     color: #5F6368;
     transition: background 0.3s ease-in-out, color 0.1s ease-in-out;
+    // margin-left: 20px;
+}
+
+ .expanded {
+    color: #5F6368;
+    transition: background 0.3s ease-in-out, color 0.1s ease-in-out;
+    margin-left: 20px;
 }
 
 .notes {

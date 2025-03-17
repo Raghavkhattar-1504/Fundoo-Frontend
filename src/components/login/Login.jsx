@@ -3,71 +3,95 @@ import "./Login.scss";
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { loginApiCall } from '../../utils/api';
-import Signup from '../signup/Signup';
 import { Link, useNavigate } from 'react-router-dom';
 
-
 const Login = () => {
-    const navigate=useNavigate();
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
+    const navigate = useNavigate();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     const [emailError, setEmailError] = useState('');
     const [passwordError, setPasswordError] = useState('');
 
     const emailValidator = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-    const handleApiCall =  () => {
+    const handleApiCall = () => {
+        let isValid = true;
+
         setEmailError('');
-        setPasswordError('');   
+        setPasswordError('');
+
         if (!email) {
-            setEmailError('Email is Required !')
-        }
-        if (!emailValidator.test(email)) {
+            setEmailError('Email is required!');
+            isValid = false;
+        } else if (!emailValidator.test(email)) {
             setEmailError('Email is not valid!');
+            isValid = false;
         }
+
         if (!password) {
-            setPasswordError('Password is Required !')
+            setPasswordError('Password is required!');
+            isValid = false;
         }
+
+        if (!isValid) return;
 
         loginApiCall({ email, password })
-            .then((res)=>{
-                localStorage.setItem("token",res?.data?.id)
+            .then((res) => {
+                localStorage.setItem("token", res?.data?.id);
                 navigate('/dashboard/notes');
-                alert("Login Success!")
             })
-            .catch((err)=>{
-                console.log(err);
-                alert("Invalid User!")
-            })
+            .catch((err) => {
+                console.log("Login failed:", err);
+                throw err;
+            });
 
-        setEmail('')
-        setPassword('')
-    }
+        setEmail('');
+        setPassword('');
+    };
+
     return (
         <div className='login-body-container'>
             <div className='content-box'>
                 <div className='login-box'>
                     <div className='login-header'>
-                        <p className='fundoo-text'><bold>Fundoo</bold></p>
-                        <p className='signin-text'><bold>Sign In</bold></p>
+                        <p className='fundoo-text'><b>Fundoo</b></p>
+                        <p className='signin-text'><b>Sign In</b></p>
                         <p className='useaccount-text'>Use Your Fundoo Account</p>
                     </div>
                     <div className='login-details'>
-                        <TextField className='outlined-basic' label="Email or Phone*" variant="outlined" value={email} onChange={(e) => setEmail(e.target.value)} />
-                        {emailError && <span> {emailError} </span>}
-                        <TextField className='outlined-basic' type='password' label="Password*" variant="outlined" value={password} onChange={(e) => setPassword(e.target.value)} />
-
-                        <div className=''><p className='forgot-password-text'>Forgot Password</p></div>
+                        <TextField
+                            className='outlined-basic'
+                            label="Email or Phone*"
+                            variant="outlined"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            error={!!emailError}
+                            helperText={emailError}
+                        />
+                        <TextField
+                            className='outlined-basic'
+                            type='password'
+                            label="Password*"
+                            variant="outlined"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            error={!!passwordError}
+                            helperText={passwordError}
+                        />
+                        <div className=''>
+                            <p className='forgot-password-text'>Forgot Password?</p>
+                        </div>
                     </div>
-
                     <div className='login-footer'>
-                        <Link to={'/register'}> <Button variant="text">Create Account</Button></Link>
-                        <Button variant="contained" onClick={handleApiCall} >Login</Button>
+                        <Link to={'/register'}>
+                            <Button variant="text">Create Account</Button>
+                        </Link>
+                        <Button variant="contained" onClick={handleApiCall}>Login</Button>
                     </div>
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default Login
+export default Login;

@@ -11,15 +11,12 @@ export default function LongMenu({ handleIconClick, noteDetails }) {
     const [date, setDate] = React.useState('');
     const [time, setTime] = React.useState('');
 
-
     const reminderData = (date, time) => {
         const isoString = new Date(`${date}T${time}:00`);
         handleIconClick("reminder", isoString);
 
         handleClose();
     }
-
-
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);

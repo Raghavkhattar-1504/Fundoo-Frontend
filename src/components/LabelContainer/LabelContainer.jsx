@@ -2,9 +2,6 @@ import React from 'react'
 import {Pencil} from 'lucide-react'
 import './LabelContainer.scss'
 function LabelContainer() {
-
-    
-
   return (
     <div className='label-main-conatiner'>
         <div className='label-centre'>

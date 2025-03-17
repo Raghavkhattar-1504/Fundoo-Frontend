@@ -7,7 +7,8 @@ const sidebarItemsList = [
     {
         name: "Notes",
         icon: Lightbulb,
-        path: '/dashboard/notes'
+        path: '/dashboard/notes',
+        onmouseover: 'toggleSideBar'
     },
     {
         name: "Archive",
@@ -34,18 +35,25 @@ const sidebarItemsList = [
 
 ];
 
-const Sidebar = ({isCollapsed}) => {
+const Sidebar = ({isCollapsed, toggleSidebar}) => {
     const location = useLocation();
 
     return (
-        <div className={`dashboard-sidebar ${isCollapsed ? 'collapsed' : ''}`}>
+        <div className={`dashboard-sidebar ${isCollapsed ? 'collapsed' : ''}`} 
+        onMouseEnter={() => {
+            toggleSidebar()
+        }}
+        onMouseLeave={() => {
+            toggleSidebar()
+        }}
+        >    
             {sidebarItemsList.map((item, index) => {
                 const IconComponent = item.icon;
                 const isActive = location.pathname === item.path;
                 return (
                     <NavLink to={item.path} key={index}>
                         <div className={`sidebar-column ${isActive ? "notes" : ""}`}>
-                            <IconComponent className='sidebar-icon' />
+                            <IconComponent className={`sidebar-icon ${!isCollapsed ? "expanded" : ""}`} />
                             {!isCollapsed && <p className='sidebar-text'>{item.name}</p>}
                         </div>
                     </NavLink>

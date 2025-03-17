@@ -12,7 +12,6 @@ let MAX_DESCRIPTION_LENGTH = 250;
 let MAX_TITLE_LENGTH = 100;
 
 const NoteCard = ({ title, description = "", noteDetails, updateList }) => {
-    // noteDetails.reminder ? MAX_DESCRIPTION_LENGTH = 50 : MAX_DESCRIPTION_LENGTH = 130
 
     const navigate = useNavigate();
     const { noteId } = useParams();
